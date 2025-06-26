@@ -7,13 +7,14 @@ import {
   Loader,
   MessageSquareText,
   SendHorizonal,
-  UserIcon,
 } from "lucide-react";
 import WorkspaceHeader from "./WorkspaceHeader";
 import { SidebarItem } from "./SidebarItem";
 import { useGetChannels } from "@/features/channels/api/useGetChannels";
 import { WorkspaceSection } from "./WorkspaceSection";
 import { useGetMembers } from "@/features/members/api/useGetMembers";
+import { UserItem } from "./UserItem";
+import { useCreateChannelModal } from "@/features/channels/store/useCreateChannelModal";
 
 const WorkspaceSidebar = () => {
   const workspaceId = useWorkspaceId();
@@ -25,7 +26,10 @@ const WorkspaceSidebar = () => {
   const { data: channels, isLoading: isChannelsLoading } = useGetChannels({
     workspaceId,
   });
-  const { data: members, isLoading: isMembersLoading } = useGetMembers(workspaceId);
+  const { data: members, isLoading: isMembersLoading } =
+    useGetMembers(workspaceId);
+
+  const [_isOpen, setIsOpen] = useCreateChannelModal();
 
   if (isMemberLoading || isWorkspaceLoading) {
     return (
@@ -62,7 +66,13 @@ const WorkspaceSidebar = () => {
           variant="default"
         />
       </div>
-      <WorkspaceSection label="Channels" hint="New channel" onNew={() => {}}>
+      <WorkspaceSection
+        label="Channels"
+        hint="New channel"
+        onNew={() => 
+          setIsOpen(true)
+        }
+      >
         {channels?.map((item) => (
           <SidebarItem
             key={item._id}
@@ -73,9 +83,21 @@ const WorkspaceSidebar = () => {
           />
         ))}
       </WorkspaceSection>
-      {members?.map((member) => (
-        
-      ))}
+      <WorkspaceSection
+        label="Direct Messages"
+        hint="New direct message"
+        onNew={() => {}}
+      >
+        {members?.map((member) => (
+          <UserItem
+            key={member._id}
+            id={member._id}
+            label={member.user?.name}
+            image={member.user?.image}
+            variant="default"
+          />
+        ))}
+      </WorkspaceSection>
     </div>
   );
 };

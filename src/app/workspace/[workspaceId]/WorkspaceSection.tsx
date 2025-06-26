@@ -28,7 +28,12 @@ export const WorkspaceSection = ({
           className="p-0.5 text-sm text-[#f9edffcc] shrink-0 size-6"
           onClick={toggleOpen}
         >
-          <FaCaretDown className={cn("size-4 transition-transform", isOpen && "-rotate-90")} />
+          <FaCaretDown
+            className={cn(
+              "size-4 transition-transform",
+              isOpen && "-rotate-90"
+            )}
+          />
         </Button>
         <Button
           variant="transparent"
@@ -42,6 +47,7 @@ export const WorkspaceSection = ({
               variant="transparent"
               size="Iconsm"
               className="opacity-0 group-hover:opacity-100 transition-opacity ml-auto p-0.5 text-sm text-[#f9edffcc] shrink-0 size-6"
+              onClick={onNew}
             >
               <PlusIcon className="size-5" />
             </Button>

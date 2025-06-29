@@ -13,11 +13,13 @@ import { useCreateChannel } from "../api/useCreateChannel";
 import { useState } from "react";
 import { useWorkspaceId } from "@/hooks/useWorkspaceId";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export const CreateChannelModal = () => {
   const [isOpen, setIsOpen] = useCreateChannelModal();
   const [name, setName] = useState("");
   const workspaceId = useWorkspaceId();
+  const router = useRouter();
 
   const { mutate, isPending } = useCreateChannel();
 
@@ -31,16 +33,14 @@ export const CreateChannelModal = () => {
       return;
     }
 
-    // Convert spaces to dashes and trim whitespace
-    const processedName = name.trim().replace(/\s+/g, "-");
-
     mutate(
-      { name: processedName, workspaceId },
+      { name, workspaceId },
       {
-        onSuccess: () => {
+        onSuccess: (id) => {
           toast.success("Channel created successfully");
           setIsOpen(false);
           setName("");
+          router.push(`/workspace/${workspaceId}/channel/${id}`);
         },
         onError: (error) => {
           toast.error("Failed to create channel, please try again");
@@ -48,6 +48,11 @@ export const CreateChannelModal = () => {
         },
       }
     );
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\s+/g, "-").toLowerCase();
+    setName(value);
   };
 
   const handleClose = () => {
@@ -68,7 +73,7 @@ export const CreateChannelModal = () => {
           <form onSubmit={handleSubmit} className="w-full space-y-4">
             <Input
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={handleChange}
               autoFocus
               minLength={1}
               disabled={isPending}

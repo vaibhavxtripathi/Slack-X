@@ -25,13 +25,16 @@ const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
           autoSaveId="workspace-layout"
         >
           <ResizablePanel
-            defaultSize={200}
-            minSize={11}
+            defaultSize={150}
+            minSize={13}
             className="bg-[#5E2C5F]"
           >
             <WorkspaceSidebar />
           </ResizablePanel>
-          <ResizableHandle withHandle />
+          <ResizableHandle
+            withHandle
+            className="w-[3.3px] hover:bg-[#1c9cd3] transition-all duration-150"
+          />
           <ResizablePanel minSize={20}>{children}</ResizablePanel>
         </ResizablePanelGroup>
       </div>

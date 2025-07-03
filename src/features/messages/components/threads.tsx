@@ -19,7 +19,10 @@ import { useGenerateUploadUrl } from "@/features/upload/api/useGenerateUploadUrl
 
 import { Id } from "../../../../convex/_generated/dataModel";
 
-const Editor = dynamic(() => import("@/app/workspace/[workspaceId]/channel/[channelId]/Editor"), { ssr: false });
+const Editor = dynamic(
+  () => import("@/app/workspace/[workspaceId]/channel/[channelId]/Editor"),
+  { ssr: false }
+);
 
 const TIME_THRESHOLD = 5;
 
@@ -38,8 +41,8 @@ type CreateMessageValues = {
 
 const formatDateLabel = (dateStr: string) => {
   const date = new Date(dateStr);
-  if (isToday(date)) return "today";
-  if (isYesterday(date)) return "yesterday";
+  if (isToday(date)) return "Today";
+  if (isYesterday(date)) return "Yesterday";
   return format(date, "EEEE, MMMM d");
 };
 
@@ -130,7 +133,7 @@ export const Thread = ({ messageId, onClose }: ThreadProps) => {
       groups[dateKey].unshift(message);
       return groups;
     },
-    {} as Record<string, typeof results>,
+    {} as Record<string, typeof results>
   );
 
   if (loadingMessage || status === "LoadingFirstPage") {
@@ -190,7 +193,7 @@ export const Thread = ({ messageId, onClose }: ThreadProps) => {
                 previousMessage.user?._id === message.user?._id &&
                 differenceInMinutes(
                   new Date(message._creationTime),
-                  new Date(previousMessage._creationTime),
+                  new Date(previousMessage._creationTime)
                 ) < TIME_THRESHOLD;
 
               return (
@@ -230,7 +233,7 @@ export const Thread = ({ messageId, onClose }: ThreadProps) => {
                     loadMore();
                   }
                 },
-                { threshold: 1.0 },
+                { threshold: 1.0 }
               );
               observer.observe(el);
               return () => observer.disconnect();

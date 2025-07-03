@@ -174,7 +174,7 @@ export const Message = ({
                 <Thumbnail url={image} />
                 {updatedAt ? (
                   <span className="text-xs text-muted-foreground">
-                    (edited)
+                    (Edited)
                   </span>
                 ) : null}
                 <Reactions data={reactions} onChange={handleReaction} />
@@ -218,7 +218,7 @@ export const Message = ({
         )}
       >
         <div className="flex items-start gap-2">
-          <button onClick={() => onOpenProfile(memberId)}>
+          <button onClick={() => onOpenProfile(memberId)} className="cursor-pointer">
             <Avatar>
               <AvatarImage src={authorImage} />
               <AvatarFallback>{avatarFallback}</AvatarFallback>
@@ -236,10 +236,10 @@ export const Message = ({
             </div>
           ) : (
             <div className="flex flex-col w-full overflow-hidden">
-              <div className="text-sm">
+              <div className="text-sm cursor-pointer">
                 <button
                   onClick={() => onOpenProfile(memberId)}
-                  className="font-bold text-primary hover:underline"
+                  className="font-bold text-primary hover:underline cursor-pointer"
                 >
                   {authorName}
                 </button>

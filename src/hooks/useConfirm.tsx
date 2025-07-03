@@ -16,7 +16,7 @@ export const useConfirm = (title: string, message: string): [() => any, () => Pr
   } | null>(null);
 
   const confirm = () =>
-    new Promise((resolve, reject) => {
+    new Promise((resolve) => {
       setPromise({ resolve });
     });
 
@@ -35,7 +35,7 @@ export const useConfirm = (title: string, message: string): [() => any, () => Pr
 
   const ConfirmDialog = () => {
     return (
-      <Dialog open={promise !== null}>
+      <Dialog open={promise !== null} onOpenChange={handleClose}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>{title}</DialogTitle>

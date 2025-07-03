@@ -75,10 +75,9 @@ const Editor = ({
       placeholder: placeholderRef.current,
       modules: {
         toolbar: [
-          ["bold", "italic", "underline", "strike"],
+          ["bold", "italic", "underline"],
           [{ list: "ordered" }, { list: "bullet" }],
-          [{ script: "sub" }, { script: "super" }],
-          ["link"],
+          
         ],
         keyboard: {
           bindings: {

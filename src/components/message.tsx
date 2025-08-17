@@ -19,7 +19,6 @@ import { Reactions } from "./reactions";
 import { ThreadBar } from "./threadBar";
 import { Thumbnail } from "./thumbnail";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
-import { useState } from "react";
 
 const Editor = dynamic(
   () => import("@/app/workspace/[workspaceId]/channel/[channelId]/Editor"),
@@ -146,13 +145,13 @@ export const Message = ({
         <ConfirmDialog />
         <div
           className={cn(
-            "flex flex-col gap-2 p-1.5 px-5 hover:bg-gray-100/60 group relative",
+            "flex flex-col mb-1.5 px-5 hover:bg-gray-100/60 group relative",
             isEditing && "bg-[#f2c74433] hover:bg-bg-[#f2c74433]",
             isRemovingMessage &&
               "bg-rose-500/50 transform transition-all scale-y-0 origin-bottom duration-200"
           )}
         >
-          <div className="flex items-start gap-2">
+          <div className="flex items-start">
             <Hint label={formatFullTime(new Date(createdAt))}>
               <button className="text-xs text-muted-foreground opacity-0 group-hover:opacity-100 w-[40px] leading-[22px] text-center hover:underline">
                 {format(new Date(createdAt), "hh:mm")}
@@ -194,9 +193,7 @@ export const Message = ({
               isPending={isPending}
               handleEdit={() => setEditingId(id)}
               handleThread={() => onOpenMessage(id)}
-              handleEmoji={() => {
-                // Emoji functionality is now handled by EmojiPopover in Toolbar
-              }}
+              handleEmoji={() => {}}
               handleDelete={handleRemove}
               handleReaction={handleReaction}
               hideThreadButton={hideThreadButton}
@@ -214,7 +211,7 @@ export const Message = ({
       <ConfirmDialog />
       <div
         className={cn(
-          "flex flex-col gap-2 p-1.5 px-5 hover:bg-gray-100/60 group relative",
+          "flex flex-col p-1 px-5 hover:bg-gray-100/60 group relative",
           isEditing && "bg-[#f2c74433] hover:bg-bg-[#f2c74433]",
           isRemovingMessage &&
             "bg-rose-500/50 transform transition-all scale-y-0 origin-bottom duration-200"
@@ -225,9 +222,11 @@ export const Message = ({
             onClick={() => onOpenProfile(memberId)}
             className="cursor-pointer"
           >
-            <Avatar>
+            <Avatar className="rounded-md mt-1">
               <AvatarImage src={authorImage} />
-              <AvatarFallback>{avatarFallback}</AvatarFallback>
+              <AvatarFallback className="rounded-md bg-sky-500 text-white">
+                {avatarFallback}
+              </AvatarFallback>
             </Avatar>
           </button>
           {isEditing ? (
@@ -279,7 +278,6 @@ export const Message = ({
             handleEdit={() => setEditingId(id)}
             handleThread={() => onOpenMessage(id)}
             handleEmoji={(emoji: string) => {
-              // Handle emoji click by toggling reaction
               toggleReaction(
                 { messageId: id, value: emoji },
                 {

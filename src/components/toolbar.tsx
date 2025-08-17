@@ -27,10 +27,14 @@ export const Toolbar = ({
   return (
     <div className="absolute top-0 right-5">
       <div className="group-hover:opacity-100 opacity-0 transition-opacity border bg-white rounded-md shadow-sm">
-        <EmojiPopover
-          onEmojiClick={(emojiData) => handleEmoji(emojiData.emoji)}
-          disabled={isPending}
-        />
+        <Hint label="Emoji">
+          <Button variant="ghost" size="icon">
+            <EmojiPopover
+              onEmojiClick={(emojiData) => handleEmoji(emojiData.emoji)}
+              disabled={isPending}
+            />
+          </Button>
+        </Hint>
         {!hideThreadButton && (
           <Hint label="Reply in thread">
             <Button

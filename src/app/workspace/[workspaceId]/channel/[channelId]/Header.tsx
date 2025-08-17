@@ -41,7 +41,7 @@ export const Header = ({ title }: HeaderProps) => {
   const handleEditOpen = (value: boolean) => {
     if (member?.role !== "admin") return;
 
-    setEditOpen(value); 
+    setEditOpen(value);
   };
 
   const [ConfirmDialog, confirm] = useConfirm(
@@ -113,14 +113,16 @@ export const Header = ({ title }: HeaderProps) => {
               <DialogTrigger asChild>
                 <div className="px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50">
                   <div className="flex items-center justify-between">
-                    <p className="text-sm font-semibold">Channel Name</p>
+                    <div className="flex flex-col gap-y-0.9">
+                      <p className="text-sm font-semibold">Channel Name</p>
+                      <p className="text-sm"># {title}</p>
+                    </div>
                     {member?.role === "admin" && (
                       <p className="text-sm text-[#1264a3] hover:underline font-semibold">
                         Edit
                       </p>
                     )}
                   </div>
-                  <p className="text-sm"># {title}</p>
                 </div>
               </DialogTrigger>
               <DialogContent>
@@ -153,11 +155,11 @@ export const Header = ({ title }: HeaderProps) => {
             </Dialog>
             {member?.role === "admin" && (
               <button
-              className="flex border items-center gap-x-2 px-5 py-4 bg-white rounded-lg cursor-pointer hover:bg-gray-50 text-rose-700"
-              onClick={handleDelete}
-              disabled={isDeleting}
-            >
-              <TrashIcon className="size-4" />
+                className="flex border items-center gap-x-2 px-5 py-4 bg-white rounded-lg cursor-pointer hover:bg-gray-50 text-rose-700"
+                onClick={handleDelete}
+                disabled={isDeleting}
+              >
+                <TrashIcon className="size-4" />
                 <p className="text-sm font-semibold">Delete Channel</p>
               </button>
             )}

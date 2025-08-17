@@ -19,6 +19,7 @@ import { Reactions } from "./reactions";
 import { ThreadBar } from "./threadBar";
 import { Thumbnail } from "./thumbnail";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
+import { useState } from "react";
 
 const Editor = dynamic(
   () => import("@/app/workspace/[workspaceId]/channel/[channelId]/Editor"),
@@ -77,7 +78,6 @@ export const Message = ({
   threadTimestamp,
 }: MessageProps) => {
   const { parentMessageId, onOpenMessage, onOpenProfile, onClose } = usePanel();
-
   const [ConfirmDialog, confirm] = useConfirm(
     "Delete message",
     "Are you sure you want to delete this message? This action cannot be undone."
@@ -194,6 +194,9 @@ export const Message = ({
               isPending={isPending}
               handleEdit={() => setEditingId(id)}
               handleThread={() => onOpenMessage(id)}
+              handleEmoji={() => {
+                // Emoji functionality is now handled by EmojiPopover in Toolbar
+              }}
               handleDelete={handleRemove}
               handleReaction={handleReaction}
               hideThreadButton={hideThreadButton}
@@ -218,7 +221,10 @@ export const Message = ({
         )}
       >
         <div className="flex items-start gap-2">
-          <button onClick={() => onOpenProfile(memberId)} className="cursor-pointer">
+          <button
+            onClick={() => onOpenProfile(memberId)}
+            className="cursor-pointer"
+          >
             <Avatar>
               <AvatarImage src={authorImage} />
               <AvatarFallback>{avatarFallback}</AvatarFallback>
@@ -272,6 +278,17 @@ export const Message = ({
             isPending={isPending}
             handleEdit={() => setEditingId(id)}
             handleThread={() => onOpenMessage(id)}
+            handleEmoji={(emoji: string) => {
+              // Handle emoji click by toggling reaction
+              toggleReaction(
+                { messageId: id, value: emoji },
+                {
+                  onError: () => {
+                    toast.error("Failed to add reaction");
+                  },
+                }
+              );
+            }}
             handleDelete={handleRemove}
             handleReaction={handleReaction}
             hideThreadButton={hideThreadButton}

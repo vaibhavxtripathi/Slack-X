@@ -37,12 +37,14 @@ export const PreferencesModal = ({
     useUpdateWorkspace();
   const { mutate: deleteWorkspace, isPending: isDeletingWorkspace } =
     useDeleteWorkspace();
-  
-  const [ConfirmDialog, confirm] = useConfirm("Delete workspace", "Are you sure you want to delete this workspace?");
+
+  const [ConfirmDialog, confirm] = useConfirm(
+    "Delete workspace",
+    "Are you sure you want to delete this workspace?"
+  );
 
   const workspaceId = useWorkspaceId();
   const router = useRouter();
-
 
   const handleEditOpen = () => {
     setInputValue(workspaceName);
@@ -68,19 +70,21 @@ export const PreferencesModal = ({
   };
 
   const handleDelete = async () => {
-    
     const ok = await confirm();
     if (!ok) return;
-    
-    deleteWorkspace({ id: workspaceId }, {
-      onSuccess: () => {
-        toast.success("Workspace deleted");
-        router.replace("/");
-      },
-      onError: (error) => {
-        toast.error("Failed to delete workspace");
-      },
-    });
+
+    deleteWorkspace(
+      { id: workspaceId },
+      {
+        onSuccess: () => {
+          toast.success("Workspace deleted");
+          router.replace("/");
+        },
+        onError: (error) => {
+          toast.error("Failed to delete workspace");
+        },
+      }
+    );
   };
 
   return (
@@ -99,14 +103,16 @@ export const PreferencesModal = ({
                   onClick={handleEditOpen}
                 >
                   <div className="flex items-center justify-between">
-                    <p className="text-sm font-semibold">Workspace name</p>
-                    <p className="text-sm text-[#1264a3] hover:underline font=semibold">
+                    <div className="flex flex-col gap-y-0.9">
+                      <p className="text-sm font-semibold">Workspace name</p>
+                      <p className="text-sm text-muted-foregroun capitalize">
+                        {workspaceName}
+                      </p>
+                    </div>
+                    <p className="text-sm text-[#1264a3] hover:underline font-semibold">
                       Edit
                     </p>
                   </div>
-                  <p className="text-sm text-muted-foregroun capitalize">
-                    {workspaceName}
-                  </p>
                 </div>
               </DialogTrigger>
               <DialogContent>
@@ -142,7 +148,11 @@ export const PreferencesModal = ({
                 </form>
               </DialogContent>
             </Dialog>
-            <button className="flex items-center gap-x-2 px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50 text-rose-700" onClick={handleDelete} disabled={isDeletingWorkspace}>
+            <button
+              className="flex items-center gap-x-2 px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50 text-rose-700"
+              onClick={handleDelete}
+              disabled={isDeletingWorkspace}
+            >
               <TrashIcon className="size-4" />
               <p className="text-sm font-semibold">Delete workspace</p>
             </button>

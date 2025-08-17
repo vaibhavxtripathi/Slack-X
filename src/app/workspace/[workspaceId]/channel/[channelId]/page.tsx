@@ -7,20 +7,19 @@ import { ChatInput } from "./ChatInput";
 
 import { useChannelId } from "@/hooks/useChannelId";
 
-import { useGetChannels } from "@/features/channels/api/useGetChannels";
+import { useGetChannelsById } from "@/features/channels/api/useGetChannelsById";
 import { useGetMessages } from "@/features/messages/api/useGetMessages";
 import { MessageList } from "@/components/messageList";
-import { useWorkspaceId } from "@/hooks/useWorkspaceId";
 
 const ChannelIdPage = () => {
   const channelId = useChannelId();
 
   const { results, status, loadMore } = useGetMessages({ channelId });
-  const workspaceId = useWorkspaceId();
-  const { data: channels, isLoading: channelsLoading } = useGetChannels({
-    workspaceId,
+  const { data: channel, isLoading: channelLoading } = useGetChannelsById({
+    channelId,
   });
-  if (channelsLoading || status === "LoadingFirstPage") {
+
+  if (channelLoading || status === "LoadingFirstPage") {
     return (
       <div className="h-full flex flex-1 items-center justify-center">
         <Loader className="animate-spin size-5 text-muted-foreground" />
@@ -28,7 +27,7 @@ const ChannelIdPage = () => {
     );
   }
 
-  if (!channels) {
+  if (!channel) {
     return (
       <div className="h-full flex flex-1 flex-col gap-y-2 items-center justify-center">
         <TriangleAlert className="size-5 text-destructive" />
@@ -39,16 +38,16 @@ const ChannelIdPage = () => {
 
   return (
     <div className="flex flex-col h-full">
-      <Header title={channels[0].name} />
+      <Header title={channel.name} />
       <MessageList
-        channelName={channels[0].name}
-        channelCreationTime={channels[0]._creationTime}
+        channelName={channel.name}
+        channelCreationTime={channel._creationTime}
         data={results}
         loadMore={loadMore}
         isLoadingMore={status === "LoadingMore"}
         canLoadMore={status === "CanLoadMore"}
       />
-      <ChatInput placeholder={`Message # ${channels[0].name}`} />
+      <ChatInput placeholder={`Message # ${channel.name}`} />
     </div>
   );
 };

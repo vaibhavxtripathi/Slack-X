@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Delta, Op } from "quill/core";
 import { MdSend } from "react-icons/md";
 import { PiTextAa } from "react-icons/pi";
-import { ImageIcon, Smile, XIcon } from "lucide-react";
+import { ImageIcon, XIcon } from "lucide-react";
 import Quill, { type QuillOptions } from "quill";
 import {
   MutableRefObject,
@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 
 import { Hint } from "@/components/hint";
 import { Button } from "@/components/ui/button";
+import { EmojiPopover } from "@/components/EmojiPopover";
 
 type EditorValue = {
   image: File | null;
@@ -77,7 +78,6 @@ const Editor = ({
         toolbar: [
           ["bold", "italic", "underline"],
           [{ list: "ordered" }, { list: "bullet" }],
-          
         ],
         keyboard: {
           bindings: {
@@ -148,12 +148,6 @@ const Editor = ({
     }
   };
 
-  const onEmojiSelect = (emoji: any) => {
-    const quill = quillRef.current;
-
-    quill?.insertText(quill?.getSelection()?.index || 0, emoji.native);
-  };
-
   const isEmpty = !image && text.replace(/<(.|\n)*?>/g, "").trim().length === 0;
 
   return (
@@ -208,11 +202,50 @@ const Editor = ({
               <PiTextAa className="size-4" />
             </Button>
           </Hint>
- 
-            <Button disabled={disabled} size="icon" variant="ghost">
-              <Smile className="size-4" />
+
+          <Hint label="Emoji">
+            <Button disabled={disabled} variant="ghost" size="icon">
+            <EmojiPopover
+              onEmojiClick={(emojiData) => {
+                if (!quillRef.current) return;
+
+                // Get current selection or use end of document as fallback
+                const range = quillRef.current.getSelection();
+                let insertIndex = range
+                  ? range.index
+                  : quillRef.current.getLength();
+
+                // If inserting at the end, check if we need to handle newlines
+                if (!range) {
+                  const contents = quillRef.current.getContents();
+                  const lastOp = contents.ops[contents.ops.length - 1];
+
+                  // If the last operation ends with a newline, insert before it
+                  if (
+                    lastOp &&
+                    typeof lastOp.insert === "string" &&
+                    lastOp.insert.endsWith("\n")
+                  ) {
+                    insertIndex = insertIndex - 1;
+                  }
+                }
+
+                // Insert emoji at the determined position
+                quillRef.current.insertText(insertIndex, emojiData.emoji);
+
+                // Set cursor position after the inserted emoji
+                quillRef.current.setSelection(
+                  insertIndex + emojiData.emoji.length
+                );
+
+                // Focus the editor to show the inserted emoji
+                quillRef.current.focus();
+              }}
+              disabled={disabled}
+            />
             </Button>
-        
+          </Hint>
+
           {variant === "create" && (
             <Hint label="Image">
               <Button

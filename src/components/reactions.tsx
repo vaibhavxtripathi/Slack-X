@@ -1,10 +1,9 @@
-import { MdOutlineAddReaction } from "react-icons/md";
-
 import { cn } from "@/lib/utils";
 import { useWorkspaceId } from "@/hooks/useWorkspaceId";
 import { useCurrentMember } from "@/features/members/api/useCurrentMember";
 
 import { Hint } from "./hint";
+import { ReactionsPopover } from "./ReactionsPopover";
 
 import { Doc, Id } from "../../convex/_generated/dataModel";
 
@@ -54,11 +53,10 @@ export const Reactions = ({ data, onChange }: ReactionsProps) => {
           </button>
         </Hint>
       ))}
-     
-        <button className="h-7 px-3 rounded-full bg-slate-200/70 border border-transparent hover:border-slate-500 text-slate-800 flex items-center gap-x-1">
-          <MdOutlineAddReaction className="size-4" />
-        </button>
-     
+
+      <ReactionsPopover
+        onReactionClick={(emojiData) => onChange(emojiData.emoji)}
+      />
     </div>
   );
 };

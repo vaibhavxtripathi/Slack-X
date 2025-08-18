@@ -1,8 +1,11 @@
-import { useState } from "react";
-import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
+import { useState, lazy, Suspense } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
 import { MdOutlineAddReaction } from "react-icons/md";
+import { Loader } from "lucide-react";
+import { EmojiStyle } from "emoji-picker-react";
+
+const EmojiPicker = lazy(() => import("emoji-picker-react"));
 
 interface ReactionsPopoverProps {
   onReactionClick: (emojiData: any) => void;
@@ -42,8 +45,8 @@ export const ReactionsPopover = ({
           reactionsDefaultOpen={true}
           autoFocusSearch={false}
           searchPlaceHolder="Search emoji..."
-          width={350}
           emojiStyle={EmojiStyle.NATIVE}
+          width={350}
           height={400}
         />
       </PopoverContent>

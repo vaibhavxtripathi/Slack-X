@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { useWorkspaceId } from "@/hooks/useWorkspaceId";
 import { useGetWorkspace } from "@/features/workspaces/api/useGetWorkspace";
 import { Info, Search } from "lucide-react";
+import { Hint } from "@/components/hint";
+import Link from "next/link";
 
 const Toolbar = () => {
   const workspaceId = useWorkspaceId();
@@ -22,9 +24,13 @@ const Toolbar = () => {
         </Button>
       </div>
       <div className="ml-auto flex-1 flex items-center justify-end">
-        <Button variant="transparent" size="Iconsm">
-          <Info className="size-5 text-white" />
-        </Button>
+        <Hint label="vxtr" side="bottom" align="center">
+          <Button variant="transparent" size="Iconsm">
+            <Link href={`https://www.github.com/vaibhavxtripathi`} target="_blank">
+              <Info className="size-5 text-white" />
+            </Link>
+          </Button>
+        </Hint>
       </div>
     </nav>
   );

@@ -3,14 +3,17 @@ import { toast } from "sonner";
 import dynamic from "next/dynamic";
 import { useRef, useState } from "react";
 
-import { useWorkspaceId } from "@/hooks/use-workspace-id";
+import { useWorkspaceId } from "@/hooks/useWorkspaceId";
 
-import { useCreateMessage } from "@/features/messages/api/use-create-message";
-import { useGenerateUploadUrl } from "@/features/upload/api/use-generate-upload-url";
+import { useCreateMessages } from "@/features/messages/api/useCreateMessages";
+import { useGenerateUploadUrl } from "@/features/upload/api/useGenerateUploadUrl";
 
-import { Id } from "../../../../../../convex/_generated/dataModel";
+import { Id } from "../../../../../../../convex/_generated/dataModel";
 
-const Editor = dynamic(() => import("@/components/editor"), { ssr: false });
+const Editor = dynamic(
+  () => import("@/app/workspace/[workspaceId]/channel/[channelId]/Editor"),
+  { ssr: false }
+);
 
 interface ChatInputProps {
   placeholder?: string;
@@ -19,7 +22,7 @@ interface ChatInputProps {
 
 type CreateMessageValues = {
   conversationId: Id<"conversations">;
-  workspaceId: Id<"workspaces">;
+  workspaceId: Id<"workspace">;
   body: string;
   image?: Id<"_storage"> | undefined;
 };
@@ -32,7 +35,7 @@ export const ChatInput = ({ placeholder, conversationId }: ChatInputProps) => {
 
   const workspaceId = useWorkspaceId();
 
-  const { mutate: createMessage } = useCreateMessage();
+  const { mutate: createMessage } = useCreateMessages();
   const { mutate: generateUploadUrl } = useGenerateUploadUrl();
 
   const handleSubmit = async ({
@@ -75,7 +78,7 @@ export const ChatInput = ({ placeholder, conversationId }: ChatInputProps) => {
         values.image = storageId;
       }
 
-      await createMessage(values, { throwError: true });
+      await createMessage(values, { throwOnError: true });
 
       setEditorKey((prevKey) => prevKey + 1);
     } catch (error) {

@@ -6,7 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useCurrentUser } from "@/features/auth/api/useCurrentUser";
-import { Loader2, LogOut } from "lucide-react";
+import { Loader, LogOut } from "lucide-react";
 import { useAuthActions } from "@convex-dev/auth/react";
 
 export const UserButton = () => {
@@ -14,7 +14,7 @@ export const UserButton = () => {
   const { signOut } = useAuthActions();
 
   if (isLoading) {
-    return <Loader2 className="size-4" />;
+    return <Loader className="size-4" />;
   }
 
   if (!user) {
@@ -26,9 +26,11 @@ export const UserButton = () => {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger className="putline-none relative ">
+          <span className="text-[#20a271] text-xl absolute -bottom-1 -right-1">●</span>
         <Avatar className="rounded-md size-10 hover:opacity-75 transition">
+          <span className="text-[#20a271] text-xl absolute -bottom-1 -right-1">●</span>
           <AvatarImage alt={name!} src={image!} />
-          <AvatarFallback className="rounded-md bg-sky-500 text-white">
+          <AvatarFallback className="rounded-md bg-sky-600 text-white">
             {avatarFallback}
           </AvatarFallback>
         </Avatar>

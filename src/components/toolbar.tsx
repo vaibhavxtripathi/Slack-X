@@ -3,6 +3,7 @@ import { MessageSquareTextIcon, Pencil, Trash } from "lucide-react";
 import { Hint } from "./hint";
 import { Button } from "./ui/button";
 import { EmojiPopover } from "./EmojiPopover";
+import { MdOutlineAddReaction } from "react-icons/md";
 
 interface ToolbarProps {
   isAuthor: boolean;
@@ -27,9 +28,10 @@ export const Toolbar = ({
   return (
     <div className="absolute top-0 right-5">
       <div className="group-hover:opacity-100 opacity-0 transition-opacity border bg-white rounded-md shadow-sm">
-        <Hint label="Emoji">
+        <Hint label="Reaction">
           <Button variant="ghost" size="icon">
             <EmojiPopover
+              icon={<MdOutlineAddReaction className="size-4" />}
               onEmojiClick={(emojiData) => handleEmoji(emojiData.emoji)}
               disabled={isPending}
             />

@@ -7,12 +7,12 @@ import Link from "next/link";
 import { useWorkspaceId } from "@/hooks/useWorkspaceId";
 
 const userItemVariants = cva(
-  "flex items-center gap-1.5 justify-start font-normal h-7 px-2 cursor-pointer text-xl, overflow-hidden",
+  "flex items-center gap-1.5 justify-start font-normal h-7 px-2 cursor-pointer text-xl, overflow-hidden mt-1",
   {
     variants: {
       variant: {
         default: "text-[#f9edffcc]",
-        active: "text-[#481349] bg-white/90 hover:bg-white/90",
+        active: "text-[#481349] bg-[#f9edff] hover:bg-[#f9edff]",
       },
       defaultVariants: {
         variant: "default",
@@ -32,18 +32,22 @@ export const UserItem = ({ id, label, image, variant }: UserItemProps) => {
   const workspaceId = useWorkspaceId();
   return (
     <Button
+      asChild
       variant="transparent"
       className={cn(userItemVariants({ variant: variant }))}
     >
-      <Link href={`/workspace/${workspaceId}/member/${id}`}>
+      <Link
+        href={`/workspace/${workspaceId}/channel/member/${id}`}
+        className="flex items-center gap-1.5"
+      >
         <Avatar className="size-5 rounded-md mr-1">
           <AvatarImage src={image} />
-          <AvatarFallback className="rounded-md bg-sky-500 text-white">
+          <AvatarFallback className="rounded-md bg-sky-600 text-white">
             {label?.charAt(0).toUpperCase()}
           </AvatarFallback>
         </Avatar>
+        <span className="truncate text-sm">{label}</span>
       </Link>
-      <span className="truncate text-sm">{label}</span>
     </Button>
   );
 };

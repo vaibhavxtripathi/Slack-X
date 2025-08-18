@@ -161,7 +161,7 @@ const Editor = ({
       />
       <div
         className={cn(
-          "flex flex-col border border-slate-200 rounded-md overflow-hidden focus-within:border-slate-300 focus-within:shadow-sm transition bg-white",
+          "flex flex-col border border-slate-200 rounded-md overflow-hidden focus-within:border-slate-300 focus-within:shadow-sm transition bg-white max-h-[300px] overflow-y-auto",
           disabled && "opacity-50"
         )}
       >
@@ -205,44 +205,44 @@ const Editor = ({
 
           <Hint label="Emoji">
             <Button disabled={disabled} variant="ghost" size="icon">
-            <EmojiPopover
-              onEmojiClick={(emojiData) => {
-                if (!quillRef.current) return;
+              <EmojiPopover
+                onEmojiClick={(emojiData) => {
+                  if (!quillRef.current) return;
 
-                // Get current selection or use end of document as fallback
-                const range = quillRef.current.getSelection();
-                let insertIndex = range
-                  ? range.index
-                  : quillRef.current.getLength();
+                  // Get current selection or use end of document as fallback
+                  const range = quillRef.current.getSelection();
+                  let insertIndex = range
+                    ? range.index
+                    : quillRef.current.getLength();
 
-                // If inserting at the end, check if we need to handle newlines
-                if (!range) {
-                  const contents = quillRef.current.getContents();
-                  const lastOp = contents.ops[contents.ops.length - 1];
+                  // If inserting at the end, check if we need to handle newlines
+                  if (!range) {
+                    const contents = quillRef.current.getContents();
+                    const lastOp = contents.ops[contents.ops.length - 1];
 
-                  // If the last operation ends with a newline, insert before it
-                  if (
-                    lastOp &&
-                    typeof lastOp.insert === "string" &&
-                    lastOp.insert.endsWith("\n")
-                  ) {
-                    insertIndex = insertIndex - 1;
+                    // If the last operation ends with a newline, insert before it
+                    if (
+                      lastOp &&
+                      typeof lastOp.insert === "string" &&
+                      lastOp.insert.endsWith("\n")
+                    ) {
+                      insertIndex = insertIndex - 1;
+                    }
                   }
-                }
 
-                // Insert emoji at the determined position
-                quillRef.current.insertText(insertIndex, emojiData.emoji);
+                  // Insert emoji at the determined position
+                  quillRef.current.insertText(insertIndex, emojiData.emoji);
 
-                // Set cursor position after the inserted emoji
-                quillRef.current.setSelection(
-                  insertIndex + emojiData.emoji.length
-                );
+                  // Set cursor position after the inserted emoji
+                  quillRef.current.setSelection(
+                    insertIndex + emojiData.emoji.length
+                  );
 
-                // Focus the editor to show the inserted emoji
-                quillRef.current.focus();
-              }}
-              disabled={disabled}
-            />
+                  // Focus the editor to show the inserted emoji
+                  quillRef.current.focus();
+                }}
+                disabled={disabled}
+              />
             </Button>
           </Hint>
 

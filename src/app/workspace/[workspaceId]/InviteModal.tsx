@@ -50,7 +50,6 @@ export const InviteModal = ({
               onClick={() => {
                 navigator.clipboard.writeText(inviteLink);
                 toast.success("Invite link copied to clipboard");
-                setOpen(false);
               }}
             >
               Copy link

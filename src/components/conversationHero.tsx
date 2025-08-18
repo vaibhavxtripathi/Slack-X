@@ -14,9 +14,9 @@ export const ConversationHero = ({
   return (
     <div className="mt-[88px] mx-5 mb-4">
       <div className="flex items-center gap-x-1 mb-2 ">
-        <Avatar className="size-14 mr-2 cursor-pointer">
+        <Avatar className="size-12 mr-2 rounded-md cursor-pointer">
           <AvatarImage src={image} />
-          <AvatarFallback>{avatarFallback}</AvatarFallback>
+          <AvatarFallback className="rounded-md bg-sky-600 text-white text-xl">{avatarFallback}</AvatarFallback>
         </Avatar>
         <p className="text-2xl font-bold cursor-pointer">{name}</p>
       </div>

@@ -12,7 +12,10 @@ import { useGenerateUploadUrl } from "@/features/upload/api/useGenerateUploadUrl
 
 import { Id } from "../../../../../../convex/_generated/dataModel";
 
-const Editor = dynamic(() => import("./Editor"), { ssr: false });
+const Editor = dynamic(
+  () => import("@/app/workspace/[workspaceId]/channel/[channelId]/Editor"),
+  { ssr: false }
+);
 
 interface ChatInputProps {
   placeholder: string;

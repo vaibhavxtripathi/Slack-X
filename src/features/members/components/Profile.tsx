@@ -7,6 +7,7 @@ import {
   Loader,
   MailIcon,
   XIcon,
+  LogOut
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -19,7 +20,6 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
 } from "@/components/ui/dropdown-menu";
-import { Card, CardContent } from "@/components/ui/card";
 
 import { useConfirm } from "@/hooks/useConfirm";
 import { useWorkspaceId } from "@/hooks/useWorkspaceId";
@@ -178,9 +178,9 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
           </Button>
         </div>
         <div className="flex flex-col p-4 items-center justify-center">
-          <Avatar className="max-w-[200px] max-h-[200px] size-full">
+          <Avatar className="max-w-[200px] max-h-[200px] size-full rounded-md aspect-square">
             <AvatarImage src={member.user.image} />
-            <AvatarFallback className="aspect-square text-6xl">
+            <AvatarFallback className="aspect-square text-6xl rounded-md bg-sky-600 text-white">
               {avatarFallback}
             </AvatarFallback>
           </Avatar>
@@ -196,9 +196,9 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
                     {member.role} <ChevronDownIcon className="size-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="">
+                <DropdownMenuContent>
                   <DropdownMenuRadioGroup
-                    value={member.role}
+                      value={member.role}
                     onValueChange={(role) =>
                       onUpdate(role as "admin" | "member")
                     }
@@ -223,8 +223,9 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
           ) : currentMember?._id === memberId &&
             currentMember?.role !== "admin" ? (
             <div className="flex items-center gap-2 mt-4">
-              <Button onClick={onLeave} variant="default">
-                Leave
+              <Button onClick={onLeave} variant="destructive">
+                    Leave
+                    <LogOut className="size-3.5 font-semibold"/>
               </Button>
             </div>
           ) : null}
@@ -232,8 +233,8 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
         <Separator />
         <div className="flex flex-col p-4">
           <p className="text-sm font-bold mb-4">Contact Information</p>
-          <div className="flex items-center gap-2">
-            <div className="size-9 rounded-md bg-muted flex items-center justify-center">
+          <div className="flex items-center gap-1">
+            <div className="size-9 p-2 rounded-md bg-muted flex items-center justify-center">
               <MailIcon className="size-4" />
             </div>
             <div className="flex flex-col">

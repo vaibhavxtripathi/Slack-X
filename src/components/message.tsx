@@ -224,7 +224,7 @@ export const Message = ({
           >
             <Avatar className="rounded-md mt-1">
               <AvatarImage src={authorImage} />
-              <AvatarFallback className="rounded-md bg-sky-500 text-white">
+              <AvatarFallback className="rounded-md bg-sky-600 text-white">
                 {avatarFallback}
               </AvatarFallback>
             </Avatar>

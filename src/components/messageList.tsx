@@ -11,6 +11,7 @@ import { GetMessagesReturnType } from "@/features/messages/api/useGetMessages";
 import { useCurrentMember } from "@/features/members/api/useCurrentMember";
 
 import { Id } from "../../convex/_generated/dataModel";
+import { useMemberId } from "@/hooks/useMemberId";
 
 const TIME_THRESHOLD = 5;
 
@@ -45,7 +46,7 @@ export const MessageList = ({
   canLoadMore,
 }: MessageListProps) => {
   const [editingId, setEditingId] = useState<Id<"messages"> | null>(null);
-
+  const memberId = useMemberId();
   const workspaceId = useWorkspaceId();
   const { data: currentMember } = useCurrentMember(workspaceId);
 
@@ -59,7 +60,7 @@ export const MessageList = ({
       groups[dateKey].unshift(message);
       return groups;
     },
-    {} as Record<string, typeof data>,
+    {} as Record<string, typeof data>
   );
 
   return (
@@ -79,7 +80,7 @@ export const MessageList = ({
               previousMessage.user?._id === message.user?._id &&
               differenceInMinutes(
                 new Date(message._creationTime),
-                new Date(previousMessage._creationTime),
+                new Date(previousMessage._creationTime)
               ) < TIME_THRESHOLD;
 
             return (
@@ -119,7 +120,7 @@ export const MessageList = ({
                   loadMore();
                 }
               },
-              { threshold: 1.0 },
+              { threshold: 1.0 }
             );
             observer.observe(el);
             return () => observer.disconnect();
@@ -138,7 +139,7 @@ export const MessageList = ({
         <ChannelHero name={channelName} creationTime={channelCreationTime} />
       )}
       {variant === "conversation" && (
-        <ConversationHero name={memberName} image={memberImage} />
+        <ConversationHero name={memberName} image={memberImage} memberId={memberId} />
       )}
     </div>
   );

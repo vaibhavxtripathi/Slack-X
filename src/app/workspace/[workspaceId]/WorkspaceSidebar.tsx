@@ -59,13 +59,11 @@ const WorkspaceSidebar = () => {
         <SidebarItem
           label="Threads"
           icon={MessageSquareText}
-          id="threads"
           variant="default"
         />
         <SidebarItem
           label="Drafts & Sent"
           icon={SendHorizonal}
-          id="drafts"
           variant="default"
         />
       </div>

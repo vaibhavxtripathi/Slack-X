@@ -7,12 +7,13 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const sidebarItemVariants = cva(
-  "flex items-center gap-1.5 justify-start font-normal h-7 px-[18px] cursor-pointer text-sm, overflow-hidden",
+  "flex items-center gap-1.5 justify-start font-normal h-7 px-[18px] cursor-pointer text-sm overflow-hidden transition-colors",
   {
     variants: {
       variant: {
-        default: "text-[#f9edffcc]",
-        active: "text-[#481349] bg-[#f9edff] hover:bg-[#f9edff]",
+        default: "text-sidebar-foreground",
+        active:
+          "text-sidebar-active-foreground bg-sidebar-active hover:bg-sidebar-active",
       },
       defaultVariants: {
         variant: "default",
@@ -48,7 +49,7 @@ export const SidebarItem = ({
           <span className="text-sm truncate">{label}</span>
         </Link>
       ) : (
-        <div className="flex items-center gap-1.5 justify-start font-normal h-7 px-[18px] cursor-pointer text-sm, overflow-hidden">
+        <div className="flex items-center gap-1.5 justify-start font-normal h-7 px-[18px] cursor-pointer text-sm overflow-hidden">
           <Icon className="size-3.5 mr-1 shrink-0" />
           <span className="text-sm truncate">{label}</span>
         </div>

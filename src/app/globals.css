@@ -38,6 +38,8 @@ body,
   --color-sidebar: var(--sidebar);
   --color-navbar: var(--navbar);
   --color-hover: var(--hover);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-sidebar-active-foreground: var(--sidebar-active-foreground);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
@@ -50,7 +52,7 @@ body,
 :root {
   --radius: 0.625rem;
 
-  /* Light theme - Slack-like */
+  /* Light theme - Slack-like (default aubergine) */
   --background: #ffffff; /* content bg */
   --foreground: #1d1c1d; /* primary text */
   --card: #ffffff;
@@ -81,10 +83,11 @@ body,
   --sidebar-accent-foreground: #4a154b;
   --sidebar-border: #3e1141;
   --sidebar-ring: #a566b7;
+  --sidebar-active: #f9edff;
 }
 
 .dark {
-  /* Dark theme - Slack-like */
+  /* Dark theme - Slack-like (default aubergine) */
   --background: #1a1d21; /* content bg */
   --foreground: #d1d2d3; /* text */
   --card: #1f2329;
@@ -111,10 +114,242 @@ body,
   --sidebar-foreground: #d6cde1;
   --sidebar-primary: #02b37f;
   --sidebar-primary-foreground: #081a16;
-  --sidebar-accent: #2a2030;
+  --sidebar-accent: #78527d;
   --sidebar-accent-foreground: #e9d7ff;
   --sidebar-border: #7d5a88;
   --sidebar-ring: #7d5a88;
+  --sidebar-active: #7d3986;
+}
+
+/* Additional palettes: Aubergine named (light/dark) */
+.theme-aubergine {
+  --navbar: #39063a;
+  --sidebar: #4e1f50;
+  --sidebar-foreground: #ffffffd9;
+  --sidebar-accent: #693e6c;
+  --sidebar-accent-foreground: #fcf8ff;
+  --sidebar-border: #3e1141;
+  --primary: #00553d;
+  --sidebar-active: #f9edff;
+  --sidebar-active-foreground: #481349;
+}
+.theme-aubergine-dark {
+  --background: #1a1d21;
+  --foreground: #d1d2d3;
+  --navbar: #431349;
+  --sidebar: #251329;
+  --sidebar-foreground: #d6cde1;
+  --sidebar-accent: #78527d;
+  --sidebar-accent-foreground: #e9d7ff;
+  --sidebar-border: #7d5a88;
+  --primary: #00553d;
+  --sidebar-active: #7d3986;
+  --sidebar-active-foreground: #fcf8ff;
+}
+
+/* Ocean palette (teal/blue) */
+.theme-ocean {
+  --navbar: #0b2a33;
+  --sidebar: #0d3b46;
+  --sidebar-foreground: #e6f6fb;
+  --sidebar-accent: #124d5c;
+  --sidebar-accent-foreground: #ddf8ff;
+  --sidebar-border: #0a2a32;
+  --primary: #0b8a8f;
+  --primary-foreground: #ffffff;
+  --accent: #e6f8fb;
+  --sidebar-active: #527580;
+  --sidebar-active-foreground: #ffffff;
+}
+.theme-ocean-dark {
+  --background: #0f1417;
+  --foreground: #d7e3e6;
+  --navbar: #0a2229;
+  --sidebar: #0b2a33;
+  --sidebar-foreground: #d7e3e6;
+  --sidebar-accent: #102d36;
+  --sidebar-accent-foreground: #d7e3e6;
+  --sidebar-border: #163a45;
+  --primary: #11a6ad;
+  --accent: #102d36;
+  --sidebar-active: #6b94a0;
+  --sidebar-active-foreground: #ffffff;
+}
+
+/* Graphite palette (neutral gray) */
+.theme-graphite {
+  --navbar: #2b2d31;
+  --sidebar: #2f3136;
+  --sidebar-foreground: #f2f3f5;
+  --sidebar-accent: #e6e7e9;
+  --sidebar-accent-foreground: #2b2d31;
+  --sidebar-border: #3a3c40;
+  --primary: #4f46e5;
+  --accent: #eef0f2;
+  --sidebar-active: #dadada;
+  --sidebar-active-foreground: #1d1c1d;
+}
+.theme-graphite-dark {
+  --background: #181a1d;
+  --foreground: #e5e7eb;
+  --navbar: #1f2124;
+  --sidebar: #202225;
+  --sidebar-foreground: #e5e7eb;
+  --sidebar-accent: #2a2d31;
+  --sidebar-accent-foreground: #e5e7eb;
+  --sidebar-border: #2d3035;
+  --primary: #6366f1;
+  --accent: #2a2d31;
+  --sidebar-active: #d5d5d5;
+  --sidebar-active-foreground: #1d1c1d;
+}
+
+/* Coral palette (soft, pleasant, eye-friendly) */
+.theme-sunset {
+  --navbar: #2d1b1b;
+  --sidebar: #3a2323;
+  --sidebar-foreground: #f8f5f5;
+  --sidebar-accent: #4a2e2e;
+  --sidebar-accent-foreground: #f8f5f5;
+  --sidebar-border: #2d1b1b;
+  --primary: #673a3a;
+  --accent: #fdf2f2;
+  --sidebar-active: #673a3a;
+  --sidebar-active-foreground: #ffffff;
+}
+.theme-sunset-dark {
+  --background: #1a1111;
+  --foreground: #fff9f9;
+  --navbar: #231515;
+  --sidebar: #2d1b1b;
+  --sidebar-foreground: #f3e8e8;
+  --sidebar-accent: #3a2323;
+  --sidebar-accent-foreground: #fefefe;
+  --sidebar-border: #4a2e2e;
+  --primary: #673a3a;
+  --primary-foreground: #ffffff;
+  --accent: #ffffff;
+  --sidebar-active: #673a3a;
+  --sidebar-active-foreground: #ffffff;
+}
+
+/* Midnight palette (deep blue/purple) */
+.theme-midnight {
+  --navbar: #1a1b2e;
+  --sidebar: #252640;
+  --sidebar-foreground: #e8eaff;
+  --sidebar-accent: #3d3b6a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #2a2b4a;
+  --primary: #8b5cf6;
+  --accent: #f0f0ff;
+  --sidebar-active: #5c3da4;
+  --sidebar-active-foreground: #ffffff;
+}
+.theme-midnight-dark {
+  --background: #0f0f1a;
+  --foreground: #d1d5ff;
+  --navbar: #15162a;
+  --sidebar: #1a1b2e;
+  --sidebar-foreground: #d1d5ff;
+  --sidebar-accent: #2a2b4a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #3d3b6a;
+  --primary: #a78bfa;
+  --primary-foreground: #ffffff;
+  --accent: #2a2b4a;
+  --sidebar-active: #704ac8;
+  --sidebar-active-foreground: #ffffff;
+}
+
+/* Theme-aware search bar and input styling */
+input[type="search"],
+input[type="text"],
+.search-input {
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+  border-color: var(--border) !important;
+}
+
+input[type="search"]:focus,
+input[type="text"]:focus,
+.search-input:focus {
+  border-color: var(--ring) !important;
+  box-shadow: 0 0 0 2px var(--ring) !important;
+}
+
+/* Theme-aware active selection styling */
+.sidebar-item-active,
+.sidebar-item[data-active="true"] {
+  background-color: var(--sidebar-accent) !important;
+  color: var(--sidebar-accent-foreground) !important;
+}
+
+.sidebar-item-active:hover,
+.sidebar-item[data-active="true"]:hover {
+  background-color: var(--sidebar-accent) !important;
+}
+
+/* Theme-aware hover states */
+.sidebar-item:hover:not(.sidebar-item-active) {
+  background-color: var(--hover) !important;
+  color: var(--foreground) !important;
+}
+
+/* Theme-aware search placeholder */
+input::placeholder,
+.search-input::placeholder {
+  color: var(--muted-foreground) !important;
+}
+
+/* Additional theme-aware styling for better consistency */
+.theme-ocean .ql-toolbar button.ql-active .ql-stroke,
+.theme-ocean .ql-toolbar button.ql-active .ql-fill {
+  stroke: var(--primary) !important;
+  fill: var(--primary) !important;
+}
+
+.theme-graphite .ql-toolbar button.ql-active .ql-stroke,
+.theme-graphite .ql-toolbar button.ql-active .ql-fill {
+  stroke: var(--primary) !important;
+  fill: var(--primary) !important;
+}
+
+.theme-sunset .ql-toolbar button.ql-active .ql-stroke,
+.theme-sunset .ql-toolbar button.ql-active .ql-fill {
+  stroke: var(--primary) !important;
+  fill: var(--primary) !important;
+}
+
+.theme-midnight .ql-toolbar button.ql-active .ql-stroke,
+.theme-midnight .ql-toolbar button.ql-active .ql-fill {
+  stroke: var(--primary) !important;
+  fill: var(--primary) !important;
+}
+
+/* Theme-aware focus states for better accessibility */
+.theme-ocean input:focus,
+.theme-ocean .search-input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px var(--primary) !important;
+}
+
+.theme-graphite input:focus,
+.theme-graphite .search-input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px var(--primary) !important;
+}
+
+.theme-sunset input:focus,
+.theme-sunset .search-input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px var(--primary) !important;
+}
+
+.theme-midnight input:focus,
+.theme-midnight .search-input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px var(--primary) !important;
 }
 
 @layer base {
@@ -202,6 +437,31 @@ body,
 }
 .ql-toolbar .ql-picker-options .ql-picker-item:hover {
   color: var(--primary) !important;
+}
+
+/* Theme-specific Quill toolbar active states */
+.theme-ocean .ql-toolbar button.ql-active .ql-stroke,
+.theme-ocean .ql-toolbar button.ql-active .ql-fill {
+  stroke: var(--primary) !important;
+  fill: var(--primary) !important;
+}
+
+.theme-graphite .ql-toolbar button.ql-active .ql-stroke,
+.theme-graphite .ql-toolbar button.ql-active .ql-fill {
+  stroke: var(--primary) !important;
+  fill: var(--primary) !important;
+}
+
+.theme-sunset .ql-toolbar button.ql-active .ql-stroke,
+.theme-sunset .ql-toolbar button.ql-active .ql-fill {
+  stroke: var(--primary) !important;
+  fill: var(--primary) !important;
+}
+
+.theme-midnight .ql-toolbar button.ql-active .ql-stroke,
+.theme-midnight .ql-toolbar button.ql-active .ql-fill {
+  stroke: var(--primary) !important;
+  fill: var(--primary) !important;
 }
 
 .ql-editor a {

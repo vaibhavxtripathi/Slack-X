@@ -41,8 +41,8 @@ export const UserButton = () => {
             signOut();
           }}
         >
-          <LogOut className="size-4 align-middle items-center text-rose-700" />
-          <span className="font-semibold text-rose-700">Log Out</span>
+          <LogOut className="size-4 align-middle items-center text-destructive" />
+          <span className="font-semibold text-destructive">Log Out</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

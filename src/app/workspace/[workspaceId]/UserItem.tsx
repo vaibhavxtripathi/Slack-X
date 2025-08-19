@@ -7,12 +7,13 @@ import Link from "next/link";
 import { useWorkspaceId } from "@/hooks/useWorkspaceId";
 
 const userItemVariants = cva(
-  "flex items-center gap-1.5 justify-start font-normal h-7 px-2 cursor-pointer text-xl, overflow-hidden mt-1",
+  "flex items-center gap-1.5 justify-start font-normal h-7 px-2 cursor-pointer text-sm overflow-hidden mt-1 transition-colors",
   {
     variants: {
       variant: {
-        default: "text-[#f9edffcc]",
-        active: "text-[#481349] bg-[#f9edff] hover:bg-[#f9edff]",
+        default: "text-sidebar-foreground",
+        active:
+          "text-sidebar-active-foreground bg-sidebar-active hover:bg-sidebar-active",
       },
       defaultVariants: {
         variant: "default",

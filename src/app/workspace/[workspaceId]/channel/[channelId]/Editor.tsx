@@ -277,7 +277,7 @@ const Editor = ({
                   });
                 }}
                 size="sm"
-                className="bg-[#007A5A]  hover:bg-[#007A5A]/80 text-white"
+                className="bg-primary hover:bg-primary/80 text-white"
               >
                 Save
               </Button>

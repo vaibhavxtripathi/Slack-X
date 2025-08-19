@@ -37,7 +37,7 @@ const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
           <ResizablePanel minSize={11} defaultSize={20} className="bg-navbar">
             <WorkspaceSidebar />
           </ResizablePanel>
-          <ResizableHandle className="w-[0px] hover:w-[2px]  bg-none hover:bg-[#1C9CD3] transition-all duration-150 h-[calc(100vh-50px)]" />
+          <ResizableHandle className="w-[1px] bg-none hover:bg-[#1C9CD3] transition-all duration-150 h-[calc(100vh-50px)]" />
           <ResizablePanel
             minSize={20}
             defaultSize={80}

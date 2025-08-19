@@ -15,9 +15,10 @@ import { Hint } from "./hint";
 
 const PALETTES = [
   { key: "theme-aubergine", label: "Aubergine" },
+  { key: "theme-uru", label: "Uru" },
   { key: "theme-ocean", label: "Ocean" },
   { key: "theme-graphite", label: "Graphite" },
-  { key: "theme-sunset", label: "Cocoa" },
+  { key: "theme-sunset", label: "Coral" },
   { key: "theme-midnight", label: "Midnight" },
 ];
 
@@ -126,15 +127,17 @@ export function ThemeToggle() {
                     className={`w-4 h-4 rounded-full ${
                       p.key === "theme-aubergine"
                         ? "bg-gradient-to-br from-purple-600 to-purple-800"
-                        : p.key === "theme-ocean"
-                          ? "bg-gradient-to-br from-teal-500 to-teal-700"
-                          : p.key === "theme-graphite"
-                            ? "bg-gradient-to-br from-gray-400 to-gray-600"
-                            : p.key === "theme-sunset"
-                              ? "bg-gradient-to-tl from-[#673A3A] to-[#432929]"
-                              : p.key === "theme-midnight"
-                                ? "bg-gradient-to-br from-indigo-600 to-indigo-800"
-                                : "bg-gradient-to-br from-gray-400 to-gray-600"
+                        : p.key === "theme-uru"
+                          ? "bg-gradient-to-br from-[#B695BE] to-[#9E0B2E]"
+                          : p.key === "theme-ocean"
+                            ? "bg-gradient-to-br from-teal-500 to-teal-700"
+                            : p.key === "theme-graphite"
+                              ? "bg-gradient-to-br from-gray-400 to-gray-600"
+                              : p.key === "theme-sunset"
+                                ? "bg-gradient-to-tl from-[#673A3A] to-[#432929]"
+                                : p.key === "theme-midnight"
+                                  ? "bg-gradient-to-br from-indigo-600 to-indigo-800"
+                                  : "bg-gradient-to-br from-gray-400 to-gray-600"
                     }`}
                   />
                 </div>

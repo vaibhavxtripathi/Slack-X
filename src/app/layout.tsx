@@ -32,34 +32,6 @@ export default function RootLayout({
   return (
     <ConvexAuthNextjsServerProvider>
       <html lang="en" suppressHydrationWarning>
-        <head>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                (function() {
-                  try {
-                    var palette = localStorage.getItem('slack-x-palette') || 'theme-aubergine';
-                    var isDark = document.documentElement.classList.contains('dark');
-                    var root = document.documentElement;
-                    
-                    // Remove any existing theme classes
-                    ['theme-aubergine', 'theme-ocean', 'theme-graphite', 'theme-sunset', 'theme-midnight'].forEach(function(theme) {
-                      root.classList.remove(theme, theme + '-dark');
-                    });
-                    
-                    // Apply saved palette immediately
-                    root.classList.add(palette);
-                    if (isDark) {
-                      root.classList.add(palette + '-dark');
-                    }
-                  } catch (e) {
-                    // Fallback to default theme if there's an error
-                  }
-                })();
-              `,
-            }}
-          />
-        </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >

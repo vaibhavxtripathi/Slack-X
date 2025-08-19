@@ -38,6 +38,7 @@ body,
   --color-sidebar: var(--sidebar);
   --color-navbar: var(--navbar);
   --color-hover: var(--hover);
+  --color-workspace-header: var(--workspace-header);
   --color-sidebar-active: var(--sidebar-active);
   --color-sidebar-active-foreground: var(--sidebar-active-foreground);
   --color-sidebar-foreground: var(--sidebar-foreground);
@@ -132,6 +133,7 @@ body,
   --primary: #00553d;
   --sidebar-active: #f9edff;
   --sidebar-active-foreground: #481349;
+  --workspace-header: #ffffff;
 }
 .theme-aubergine-dark {
   --background: #1a1d21;
@@ -145,6 +147,35 @@ body,
   --primary: #00553d;
   --sidebar-active: #7d3986;
   --sidebar-active-foreground: #fcf8ff;
+  --workspace-header: #ffffff;
+}
+
+/* Uru palette (soft purple/lavender) */
+.theme-uru {
+  --navbar: #f4daff;
+  --sidebar: #fefbff;
+  --sidebar-foreground: #78527d;
+  --sidebar-accent: #dfbdef;
+  --sidebar-accent-foreground: #78527d;
+  --sidebar-border: #9e0b2e;
+  --primary: #9e0b2e;
+  --accent: #f4daff;
+  --workspace-header: #78527d;
+  --sidebar-active: #9e0b2e;
+  --sidebar-active-foreground: #ffffff;
+}
+.theme-uru-dark {
+  --navbar: #2B2236;
+  --sidebar: #362B45;
+  --sidebar-foreground: #f4daff;
+  --sidebar-accent: #3E3152;
+  --sidebar-accent-foreground: #f4daff;
+  --sidebar-border: #3E3152;
+  --primary: #6B4CAF;
+  --accent: #6B4CAF;
+  --workspace-header: #f4daff;
+  --sidebar-active: #6B4CAF;
+  --sidebar-active-foreground: #ffffff;
 }
 
 /* Ocean palette (teal/blue) */
@@ -160,6 +191,7 @@ body,
   --accent: #e6f8fb;
   --sidebar-active: #527580;
   --sidebar-active-foreground: #ffffff;
+  --workspace-header: #e6f8fb;
 }
 .theme-ocean-dark {
   --background: #0f1417;
@@ -174,6 +206,7 @@ body,
   --accent: #102d36;
   --sidebar-active: #6b94a0;
   --sidebar-active-foreground: #ffffff;
+  --workspace-header: #e6f8fb;
 }
 
 /* Graphite palette (neutral gray) */
@@ -181,13 +214,14 @@ body,
   --navbar: #2b2d31;
   --sidebar: #2f3136;
   --sidebar-foreground: #f2f3f5;
-  --sidebar-accent: #e6e7e9;
-  --sidebar-accent-foreground: #2b2d31;
+  --sidebar-accent: #b9b8b8a0;
+  --sidebar-accent-foreground: #ececec;
   --sidebar-border: #3a3c40;
-  --primary: #4f46e5;
+  --primary: #212121;
   --accent: #eef0f2;
   --sidebar-active: #dadada;
   --sidebar-active-foreground: #1d1c1d;
+  --workspace-header: #f2f3f5;
 }
 .theme-graphite-dark {
   --background: #181a1d;
@@ -202,6 +236,7 @@ body,
   --accent: #2a2d31;
   --sidebar-active: #d5d5d5;
   --sidebar-active-foreground: #1d1c1d;
+  --workspace-header: #f2f3f5;
 }
 
 /* Coral palette (soft, pleasant, eye-friendly) */
@@ -216,6 +251,7 @@ body,
   --accent: #fdf2f2;
   --sidebar-active: #673a3a;
   --sidebar-active-foreground: #ffffff;
+  --workspace-header: #f8f5f5;
 }
 .theme-sunset-dark {
   --background: #1a1111;
@@ -231,6 +267,7 @@ body,
   --accent: #ffffff;
   --sidebar-active: #673a3a;
   --sidebar-active-foreground: #ffffff;
+  --workspace-header: #f8f5f5;
 }
 
 /* Midnight palette (deep blue/purple) */
@@ -245,6 +282,7 @@ body,
   --accent: #f0f0ff;
   --sidebar-active: #5c3da4;
   --sidebar-active-foreground: #ffffff;
+  --workspace-header: #f0f0ff;
 }
 .theme-midnight-dark {
   --background: #0f0f1a;
@@ -260,6 +298,7 @@ body,
   --accent: #2a2b4a;
   --sidebar-active: #704ac8;
   --sidebar-active-foreground: #ffffff;
+  --workspace-header: #f0f0ff;
 }
 
 /* Theme-aware search bar and input styling */
@@ -342,6 +381,12 @@ input::placeholder,
 
 .theme-sunset input:focus,
 .theme-sunset .search-input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px var(--primary) !important;
+}
+
+.theme-uru input:focus,
+.theme-uru .search-input:focus {
   border-color: var(--primary) !important;
   box-shadow: 0 0 0 2px var(--primary) !important;
 }
@@ -454,6 +499,12 @@ input::placeholder,
 
 .theme-sunset .ql-toolbar button.ql-active .ql-stroke,
 .theme-sunset .ql-toolbar button.ql-active .ql-fill {
+  stroke: var(--primary) !important;
+  fill: var(--primary) !important;
+}
+
+.theme-uru .ql-toolbar button.ql-active .ql-stroke,
+.theme-uru .ql-toolbar button.ql-active .ql-fill {
   stroke: var(--primary) !important;
   fill: var(--primary) !important;
 }

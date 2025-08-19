@@ -35,7 +35,7 @@ const WorkspaceHeader = ({ workspace, isAdmin }: WorkspaceHeaderProps) => {
         onOpenChange={setPreferencesOpen}
         initialValue={workspace.name}
       />
-      <div className="flex items-center justify-between px-4 h-[49px] gap-0.5 w-full min-w-0 text-white">
+      <div className="flex items-center justify-between px-4 h-[49px] gap-0.5 w-full min-w-0 text-workspace-header">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
@@ -81,7 +81,7 @@ const WorkspaceHeader = ({ workspace, isAdmin }: WorkspaceHeaderProps) => {
             )}
           </DropdownMenuContent>
         </DropdownMenu>
-        <div className="flex items-center gap-0.5 shrink-0 text-white">
+        <div className="flex items-center gap-0.5 shrink-0 text-workspace-header">
           <ThemeToggle />
           <Hint label="Filter" side="bottom" align="center">
             <Button variant="transparent" size="icon">

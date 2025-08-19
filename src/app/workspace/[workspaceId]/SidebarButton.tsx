@@ -20,12 +20,16 @@ export const SidebarButton = ({
         variant="transparent"
         className={cn(
           "size-9 group-hover:bg-accent/20",
-          isActive && "bg-accent/20"
+          isActive && "bg-sidebar-accent-foreground/20 p-2 rounded-md"
         )}
       >
-        <Icon className="size-5 text-white group-hover:scale-110 transition-all" />
+        <Icon
+          className={cn(
+            "size-5 text-sidebar-foreground group-hover:scale-110 transition-all"
+          )}
+        />
       </Button>
-      <span className="text-[11px] text-white group-hover:text-accent">
+      <span className="text-[11px] font-bold text-sidebar-foreground group-hover:text-accent">
         {label}
       </span>
     </div>

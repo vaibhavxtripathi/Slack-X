@@ -91,15 +91,15 @@ export const PreferencesModal = ({
     <>
       <ConfirmDialog />
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="p-0 bg-gray-50 overflow-hidden">
-          <DialogHeader className="p-4 border-b bg-white">
+        <DialogContent className="p-0 bg-background overflow-hidden">
+          <DialogHeader className="p-4 border-b bg-background">
             <DialogTitle className="capitalize">{workspaceName}</DialogTitle>
           </DialogHeader>
           <div className="px-4 pb-4 flex flex-col gap-y-2">
             <Dialog open={isEditing} onOpenChange={setIsEditing}>
               <DialogTrigger asChild>
                 <div
-                  className="px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50"
+                  className="px-5 py-4 bg-background rounded-lg border cursor-pointer hover:bg-hover"
                   onClick={handleEditOpen}
                 >
                   <div className="flex items-center justify-between">
@@ -149,7 +149,7 @@ export const PreferencesModal = ({
               </DialogContent>
             </Dialog>
             <button
-              className="flex items-center gap-x-2 px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50 text-rose-700"
+              className="flex items-center gap-x-2 px-5 py-4 bg-background rounded-lg border cursor-pointer hover:bg-hover text-red-600"
               onClick={handleDelete}
               disabled={isDeletingWorkspace}
             >

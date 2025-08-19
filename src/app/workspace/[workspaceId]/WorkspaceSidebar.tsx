@@ -36,21 +36,21 @@ const WorkspaceSidebar = () => {
 
   if (isMemberLoading || isWorkspaceLoading) {
     return (
-      <div className="flex flex-col bg-[#5e2c5f] h-full items-center justify-center">
-        <Loader className="size-5 animate-spin text-white" />
+      <div className="flex flex-col bg-sidebar h-full items-center justify-center">
+        <Loader className="size-5 animate-spin text-sidebar-foreground" />
       </div>
     );
   }
   if (!workspace || !member) {
     return (
-      <div className="flex flex-col gap-y-2 bg-[#5e2c5f] h-full items-center justify-center">
-        <AlertTriangle className="size-5 text-white" />
-        <p className="text-white">No workspace found.</p>
+      <div className="flex flex-col gap-y-2 bg-sidebar h-full items-center justify-center">
+        <AlertTriangle className="size-5 text-sidebar-foreground" />
+        <p className="text-sidebar-foreground">No workspace found.</p>
       </div>
     );
   }
   return (
-    <div className="flex flex-col bg-[#5e2c5f] h-full">
+    <div className="flex flex-col bg-sidebar h-[99.5%] border-[0.5px] border-sidebar-border rounded-tl-md rounded-bl-md">
       <WorkspaceHeader
         workspace={workspace}
         isAdmin={member.role === "admin"}

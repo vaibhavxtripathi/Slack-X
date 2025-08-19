@@ -12,13 +12,13 @@ import { Hint } from "@/components/hint";
 import { PreferencesModal } from "./preferencesModal";
 import { useState } from "react";
 import { InviteModal } from "./InviteModal";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface WorkspaceHeaderProps {
   workspace: Doc<"workspace">;
   isAdmin: boolean;
 }
 const WorkspaceHeader = ({ workspace, isAdmin }: WorkspaceHeaderProps) => {
-
   const [preferencesOpen, setPreferencesOpen] = useState(false);
   const [inviteOpen, setInviteOpen] = useState(false);
 
@@ -35,7 +35,7 @@ const WorkspaceHeader = ({ workspace, isAdmin }: WorkspaceHeaderProps) => {
         onOpenChange={setPreferencesOpen}
         initialValue={workspace.name}
       />
-      <div className="flex items-center justify-between px-4 h-[49px] gap-0.5 w-full min-w-0">
+      <div className="flex items-center justify-between px-4 h-[49px] gap-0.5 w-full min-w-0 text-white">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
@@ -81,7 +81,8 @@ const WorkspaceHeader = ({ workspace, isAdmin }: WorkspaceHeaderProps) => {
             )}
           </DropdownMenuContent>
         </DropdownMenu>
-        <div className="flex items-center gap-0.5 shrink-0">
+        <div className="flex items-center gap-0.5 shrink-0 text-white">
+          <ThemeToggle />
           <Hint label="Filter" side="bottom" align="center">
             <Button variant="transparent" size="icon">
               <ListFilter className="size-5" />

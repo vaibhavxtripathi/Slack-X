@@ -28,7 +28,7 @@ export const ConversationHero = ({
         </button>
         <p className="text-2xl font-bold cursor-pointer">{name}</p>
       </div>
-      <p className="font-normal text-slate-800 mb-4">
+      <p className="font-normal text-foreground mb-4">
         This conversation is just between you and <strong>{name}</strong>
       </p>
     </div>

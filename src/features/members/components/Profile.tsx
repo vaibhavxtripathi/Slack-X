@@ -170,7 +170,7 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
       <RemoveDialog />
       <LeaveDialog />
       <UpdateDialog />
-      <div className="h-full flex flex-col">
+      <div className="h-[calc(100vh-50px)] flex flex-col pb-1">
         <div className="h-[49px] flex justify-between items-center px-4 border-b">
           <p className="text-lg font-bold">Profile</p>
           <Button onClick={onClose} size="Iconsm" variant="ghost">

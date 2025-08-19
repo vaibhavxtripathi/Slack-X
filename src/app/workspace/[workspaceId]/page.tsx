@@ -43,7 +43,7 @@ const WorkspaceIdPage = () => {
 
   if (workspaceLoading || channelsLoading) {
     return (
-      <div className="flex h-full flex-1 w-full items-center justify-center flex-col gap-2">
+      <div className="flex h-[99.5%] flex-1 w-full items-center justify-center flex-col gap-2">
         <TriangleAlert className="size-6 text-muted-foreground" />
         <span className="text-sm text-muted-foreground">
           Workspace not found

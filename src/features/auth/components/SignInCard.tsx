@@ -55,18 +55,18 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
         <CardDescription>
           Use your email or another service to login to your account
         </CardDescription>
-      {!!error && (
-        <div className="bg-destructive/15 p-3 rounded-md flex items-center text-sm text-destructive mt-2">
-          <TriangleAlert className="size-4 mr-2" />
-          <p>{error}</p>
-        </div>
-      )}
+        {!!error && (
+          <div className="bg-destructive/15 p-3 rounded-md flex items-center text-sm text-destructive mt-2">
+            <TriangleAlert className="size-4 mr-2" />
+            <p>{error}</p>
+          </div>
+        )}
       </CardHeader>
       <CardContent className="space-y-5 px-0 pb-0">
         <form onSubmit={handlePasswordSignIn} className="space-y-4">
           <Input
             disabled={isLoading}
-            placeholder="Email"
+            placeholder="Try 'test@test.com'"
             type="email"
             className="h-10"
             autoComplete="email"
@@ -76,7 +76,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
           />
           <Input
             disabled={isLoading}
-            placeholder="Password"
+            placeholder="Try 'Test@123'"
             type="password"
             className="h-10"
             autoComplete="current-password"
@@ -84,7 +84,12 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <Button disabled={isLoading} type="submit" className="w-full p-5">
+          <Button
+            disabled={isLoading}
+            type="submit"
+            className="w-full p-5"
+            variant="default"
+          >
             Login
           </Button>
         </form>

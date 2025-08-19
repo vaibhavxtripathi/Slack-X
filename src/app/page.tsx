@@ -22,9 +22,5 @@ export default function Home() {
     }
   }, [workspaceId, isLoading, isOpen, setIsOpen, router]);
 
-  return (
-    <>
-      <UserButton />
-    </>
-  );
+  return <>{workspaceId ? <UserButton /> : null}</>;
 }

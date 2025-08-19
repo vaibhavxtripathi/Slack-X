@@ -89,7 +89,7 @@ export const Header = ({ title }: HeaderProps) => {
   };
 
   return (
-    <div className="bg-white border-b h-[49px] flex items-center px-4 overflow-hidden">
+    <div className="bg-background border-b h-[49px] flex items-center px-4 overflow-hidden">
       <ConfirmDialog />
       <Dialog>
         <DialogTrigger asChild>
@@ -98,12 +98,12 @@ export const Header = ({ title }: HeaderProps) => {
             size="icon"
             className="text-lg font-semibold px-2 overflow-hidden w-auto"
           >
-            <span className="truncate">{title}</span>
+            <span className="truncate font-bold">{title}</span>
             <FaChevronDown className="size-2.5 ml-auto mt-1" />
           </Button>
         </DialogTrigger>
-        <DialogContent className="p-0 bg-gray-50 overflow-hidden">
-          <DialogHeader className="p-4 border-b bg-white">
+        <DialogContent className="p-0 bg-background overflow-hidden">
+          <DialogHeader className="p-4 border-b bg-background">
             <DialogTitle className="text-lg font-semibold">
               # {title}
             </DialogTitle>
@@ -111,7 +111,7 @@ export const Header = ({ title }: HeaderProps) => {
           <div className="p-4 pb-4 flex flex-col gap-y-2 -mt-3 mb-3">
             <Dialog open={editOpen} onOpenChange={handleEditOpen}>
               <DialogTrigger asChild>
-                <div className="px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50">
+                <div className="px-5 py-4 bg-background rounded-lg border cursor-pointer hover:bg-hover">
                   <div className="flex items-center justify-between">
                     <div className="flex flex-col gap-y-0.9">
                       <p className="text-sm font-semibold">Channel Name</p>
@@ -155,7 +155,7 @@ export const Header = ({ title }: HeaderProps) => {
             </Dialog>
             {member?.role === "admin" && (
               <button
-                className="flex border items-center gap-x-2 px-5 py-4 bg-white rounded-lg cursor-pointer hover:bg-gray-50 text-rose-700"
+                className="flex border items-center gap-x-2 px-5 py-4 bg-background rounded-lg cursor-pointer hover:bg-hover text-red-600"
                 onClick={handleDelete}
                 disabled={isDeleting}
               >

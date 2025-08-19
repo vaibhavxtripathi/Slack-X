@@ -145,7 +145,7 @@ export const Message = ({
         <ConfirmDialog />
         <div
           className={cn(
-            "flex flex-col mb-1.5 px-5 hover:bg-gray-100/60 group relative",
+            "flex flex-col mb-1.5 px-5 hover:bg-hover group relative",
             isEditing && "bg-[#f2c74433] hover:bg-bg-[#f2c74433]",
             isRemovingMessage &&
               "bg-rose-500/50 transform transition-all scale-y-0 origin-bottom duration-200"
@@ -211,7 +211,7 @@ export const Message = ({
       <ConfirmDialog />
       <div
         className={cn(
-          "flex flex-col p-1 px-5 hover:bg-gray-100/60 group relative",
+          "flex flex-col p-1 px-5 hover:bg-hover group relative",
           isEditing && "bg-[#f2c74433] hover:bg-bg-[#f2c74433]",
           isRemovingMessage &&
             "bg-rose-500/50 transform transition-all scale-y-0 origin-bottom duration-200"
@@ -244,7 +244,7 @@ export const Message = ({
               <div className="text-sm cursor-pointer">
                 <button
                   onClick={() => onOpenProfile(memberId)}
-                  className="font-bold text-primary hover:underline cursor-pointer"
+                  className="font-bold text-foreground hover:underline cursor-pointer"
                 >
                   {authorName}
                 </button>

@@ -32,6 +32,14 @@ export default function RootLayout({
   return (
     <ConvexAuthNextjsServerProvider>
       <html lang="en" suppressHydrationWarning>
+        <head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html:
+                "(function(){try{var STORAGE_KEY='slack-x-palette';var palette=localStorage.getItem(STORAGE_KEY)||'theme-aubergine';var isDark=(function(){try{return localStorage.getItem('theme')==='dark';}catch(e){return false;}})();var root=document.documentElement;var KEYS=['theme-aubergine','theme-uru','theme-ocean','theme-graphite','theme-sunset','theme-midnight'];for(var i=0;i<KEYS.length;i++){root.classList.remove(KEYS[i],KEYS[i]+'-dark');}root.classList.add(palette);if(isDark){root.classList.add(palette+'-dark');}}catch(e){}})();",
+            }}
+          />
+        </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >

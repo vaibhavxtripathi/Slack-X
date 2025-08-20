@@ -30,41 +30,32 @@ export function ThemeToggle() {
 
   const [palette, setPalette] = useState<string>(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem(STORAGE_KEY) || "theme-aubergine";
+      return localStorage.getItem(STORAGE_KEY) || PALETTES[0].key;
     }
-    return "theme-aubergine";
+    return PALETTES[0].key;
   });
 
-  // Apply theme immediately on mount to prevent flash
   useEffect(() => {
     const root = document.documentElement;
-    const savedPalette = localStorage.getItem(STORAGE_KEY) || "theme-aubergine";
+    const savedPalette = localStorage.getItem(STORAGE_KEY) || PALETTES[0].key;
 
-    // Remove prior palette classes
     PALETTES.forEach((p) => root.classList.remove(p.key, `${p.key}-dark`));
 
-    // Apply saved palette immediately
     root.classList.add(savedPalette);
 
-    // Apply dark variant if dark mode is active
     if (isDark) {
       root.classList.add(`${savedPalette}-dark`);
     }
 
-    // Update state
     setPalette(savedPalette);
-  }, [isDark]); // Add isDark to dependency array
+  }, [isDark]);
 
-  // Handle theme changes
   useEffect(() => {
     const root = document.documentElement;
-    // Remove prior palette classes
     PALETTES.forEach((p) => root.classList.remove(p.key, `${p.key}-dark`));
-    // Apply current palette, and palette-dark if dark theme is active
     root.classList.add(palette);
     if (isDark) root.classList.add(`${palette}-dark`);
 
-    // Save to localStorage
     if (typeof window !== "undefined") {
       localStorage.setItem(STORAGE_KEY, palette);
     }

@@ -71,20 +71,19 @@ body,
   --destructive: #e01e5a;
   --border: #d4d4d4; /* subtle borders */
   --input: #e8e8e9;
-  --ring: #1264a3; /* focus blue */
+  --ring: #c8c8c8;
   --hover: #f8f8fa;
 
-  /* Sidebar light (Aubergine) */
   --navbar: #39063a;
   --sidebar: #4e1f50;
-  --sidebar-foreground: #ffffffd9; /* ~85% white */
-  --sidebar-primary: #ffffff;
-  --sidebar-primary-foreground: #4a154b;
-  --sidebar-accent: #f1e4f9; /* selection */
-  --sidebar-accent-foreground: #4a154b;
+  --sidebar-foreground: #ffffffd9;
+  --sidebar-accent: #693e6c;
+  --sidebar-accent-foreground: #fcf8ff;
   --sidebar-border: #3e1141;
-  --sidebar-ring: #a566b7;
+  --primary: #00553d;
   --sidebar-active: #f9edff;
+  --sidebar-active-foreground: #481349;
+  --workspace-header: #ffffff;
 }
 
 .dark {
@@ -106,7 +105,7 @@ body,
   --destructive: #f26f7d;
   --border: #363a3e;
   --input: #2a2f36;
-  --ring: #7db4ff;
+  --ring: #c8c8c8;
   --hover: #222529;
 
   /* Sidebar dark (Aubergine dark) */
@@ -165,16 +164,16 @@ body,
   --sidebar-active-foreground: #ffffff;
 }
 .theme-uru-dark {
-  --navbar: #2B2236;
-  --sidebar: #362B45;
+  --navbar: #2b2236;
+  --sidebar: #362b45;
   --sidebar-foreground: #f4daff;
-  --sidebar-accent: #3E3152;
+  --sidebar-accent: #3e3152;
   --sidebar-accent-foreground: #f4daff;
-  --sidebar-border: #3E3152;
-  --primary: #6B4CAF;
-  --accent: #6B4CAF;
+  --sidebar-border: #3e3152;
+  --primary: #6b4caf;
+  --accent: #6b4caf;
   --workspace-header: #f4daff;
-  --sidebar-active: #6B4CAF;
+  --sidebar-active: #6b4caf;
   --sidebar-active-foreground: #ffffff;
 }
 

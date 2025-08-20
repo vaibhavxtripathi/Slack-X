@@ -44,7 +44,7 @@ export const UserItem = ({ id, label, image, variant }: UserItemProps) => {
         <Avatar className="size-5 rounded-md mr-1">
           <AvatarImage src={image} />
           <AvatarFallback className="rounded-md bg-sky-600 text-white">
-            {label?.charAt(0).toUpperCase()}
+            {(label?.charAt(0) || "?").toUpperCase()}
           </AvatarFallback>
         </Avatar>
         <span className="truncate text-sm">{label}</span>

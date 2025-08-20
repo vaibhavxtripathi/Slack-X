@@ -18,7 +18,7 @@ export const ThreadBar = ({
   name = "Member",
   onClick,
 }: ThreadBarProps) => {
-  const avatarFallback = name.charAt(0).toUpperCase();
+  const avatarFallback = (name?.charAt(0) || "?").toUpperCase();
 
   if (!count || !timestamp) return null;
 

@@ -32,7 +32,7 @@ export const WorkspaceSwitcher = () => {
           {workspaceLoading ? (
             <Loader color="white" className="size-5 animate-spin shrink-0" />
           ) : (
-            workspace?.name?.charAt(0).toUpperCase()
+            (workspace?.name?.charAt(0) || "?").toUpperCase()
           )}
         </Button>
       </DropdownMenuTrigger>
@@ -57,7 +57,7 @@ export const WorkspaceSwitcher = () => {
             }}
           >
             <div className="shrink-0 size-9 realtive overflow-hidden bg-[#616061] text-white font-semibold text-xl rounded-md flex items-center justify-center mr-2">
-              {workspace.name.charAt(0).toUpperCase()}
+              {(workspace.name?.charAt(0) || "?").toUpperCase()}
             </div>
             <div className="truncate">{workspace?.name}</div>
           </DropdownMenuItem>

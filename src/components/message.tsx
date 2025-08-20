@@ -204,7 +204,7 @@ export const Message = ({
     );
   }
 
-  const avatarFallback = authorName.charAt(0).toUpperCase();
+  const avatarFallback = (authorName?.charAt(0) || "?").toUpperCase();
 
   return (
     <>

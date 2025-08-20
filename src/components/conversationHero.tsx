@@ -13,7 +13,7 @@ export const ConversationHero = ({
   image,
   memberId,
 }: ConversationHeroProps) => {
-  const avatarFallback = name.charAt(0).toUpperCase();
+  const avatarFallback = (name?.charAt(0) || "?").toUpperCase();
   const { onOpenProfile } = usePanel();
   return (
     <div className="mt-[88px] mx-5 mb-4">

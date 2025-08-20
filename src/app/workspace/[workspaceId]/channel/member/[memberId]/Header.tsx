@@ -14,7 +14,7 @@ export const Header = ({
   memberImage,
   onClick,
 }: HeaderProps) => {
-  const avatarFallback = memberName.charAt(0).toUpperCase();
+  const avatarFallback = (memberName?.charAt(0) || "?").toUpperCase();
 
   return (
     <div className="bg-background border-b h-[49px] flex items-center px-4 overflow-hidden">
@@ -26,7 +26,9 @@ export const Header = ({
       >
         <Avatar className="size-7 mr-1">
           <AvatarImage src={memberImage} />
-          <AvatarFallback className="bg-sky-600 text-white">{avatarFallback}</AvatarFallback>
+          <AvatarFallback className="bg-sky-600 text-white">
+            {avatarFallback}
+          </AvatarFallback>
         </Avatar>
         <span className="truncate font-bold">{memberName}</span>
         <FaChevronDown className="size-2.5 ml-2" />

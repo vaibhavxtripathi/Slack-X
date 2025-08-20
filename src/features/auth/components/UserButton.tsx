@@ -20,8 +20,9 @@ export const UserButton = () => {
   if (!user) {
     return null;
   }
-  const { image, name } = user;
-  const avatarFallback = name!.charAt(0).toUpperCase() || "?";
+  const { image, name, email } = user;
+  const displayName = name || email || "User";
+  const avatarFallback = (displayName.charAt(0) || "?").toUpperCase();
 
   return (
     <DropdownMenu modal={false}>
@@ -33,7 +34,7 @@ export const UserButton = () => {
           <span className="text-[#20a271] text-xl absolute -bottom-1 -right-1">
             ●
           </span>
-          <AvatarImage alt={name!} src={image!} />
+          <AvatarImage alt={displayName} src={image || undefined} />
           <AvatarFallback className="rounded-md bg-sky-600 text-white">
             {avatarFallback}
           </AvatarFallback>

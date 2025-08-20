@@ -1,27 +1,24 @@
 import { useState, lazy, Suspense } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-import { Button } from "./ui/button";
 import { Smile, Loader } from "lucide-react";
-import { EmojiStyle } from "emoji-picker-react";
+import { EmojiStyle, EmojiClickData } from "emoji-picker-react";
 
 const EmojiPicker = lazy(() => import("emoji-picker-react"));
 
 interface EmojiPopoverProps {
-  onEmojiClick: (emojiData: any) => void;
-  disabled?: boolean;
+  onEmojiClick: (emojiData: EmojiClickData) => void;
   children?: React.ReactNode;
   icon?: React.ReactNode;
 }
 
 export const EmojiPopover = ({
   onEmojiClick,
-  disabled,
   children,
   icon,
 }: EmojiPopoverProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleEmojiClick = (emojiData: any) => {
+  const handleEmojiClick = (emojiData: EmojiClickData) => {
     onEmojiClick(emojiData);
     setIsOpen(false);
   };

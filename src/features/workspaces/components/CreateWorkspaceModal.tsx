@@ -21,8 +21,7 @@ export const CreateWorkspaceModal = () => {
   const [isOpen, setIsOpen] = useCreateWorkspaceModal();
   const [name, setName] = useState("");
 
-  const { mutate, isPending, isSuccess, isError, isSettled } =
-    useCreateWorkspace();
+  const { mutate, isPending } = useCreateWorkspace();
 
   const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>

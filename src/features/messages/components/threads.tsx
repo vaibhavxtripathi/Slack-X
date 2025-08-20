@@ -115,7 +115,7 @@ export const Thread = ({ messageId, onClose }: ThreadProps) => {
       await createMessage(values, { throwOnError: true });
 
       setEditorKey((prevKey) => prevKey + 1);
-    } catch (error) {
+    } catch {
       toast.error("Failed to send message");
     } finally {
       setIsPending(false);

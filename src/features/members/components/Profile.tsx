@@ -7,7 +7,7 @@ import {
   Loader,
   MailIcon,
   XIcon,
-  LogOut
+  LogOut,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -61,10 +61,8 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
     id: memberId,
   });
 
-  const { mutate: updateMember, isPending: isUpdatingMember } =
-    useUpdateMember();
-  const { mutate: removeMember, isPending: isRemovingMember } =
-    useRemoveMember();
+  const { mutate: updateMember } = useUpdateMember();
+  const { mutate: removeMember } = useRemoveMember();
 
   const onRemove = async () => {
     const ok = await confirmRemove();
@@ -198,7 +196,7 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuRadioGroup
-                      value={member.role}
+                    value={member.role}
                     onValueChange={(role) =>
                       onUpdate(role as "admin" | "member")
                     }
@@ -224,8 +222,8 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
             currentMember?.role !== "admin" ? (
             <div className="flex items-center gap-2 mt-4">
               <Button onClick={onLeave} variant="destructive">
-                    Leave
-                    <LogOut className="size-3.5 font-semibold"/>
+                Leave
+                <LogOut className="size-3.5 font-semibold" />
               </Button>
             </div>
           ) : null}

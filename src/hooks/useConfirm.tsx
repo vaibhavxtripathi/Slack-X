@@ -9,8 +9,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
-
-export const useConfirm = (title: string, message: string): [() => any, () => Promise<unknown>] => {
+export const useConfirm = (
+  title: string,
+  message: string
+): [() => React.ReactNode, () => Promise<unknown>] => {
   const [promise, setPromise] = useState<{
     resolve: (value: boolean) => void;
   } | null>(null);
@@ -42,7 +44,9 @@ export const useConfirm = (title: string, message: string): [() => any, () => Pr
             <DialogDescription>{message}</DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline" onClick={handleCancel}>Cancel</Button>
+            <Button variant="outline" onClick={handleCancel}>
+              Cancel
+            </Button>
             <Button onClick={handleConfirm}>Confirm</Button>
           </DialogFooter>
         </DialogContent>

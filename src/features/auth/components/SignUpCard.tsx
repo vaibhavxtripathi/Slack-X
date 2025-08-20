@@ -49,7 +49,7 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
       password,
       flow: "signUp",
     })
-      .catch((error) => {
+      .catch(() => {
         setError(
           "Password must contain a capital letter, a number and a special character"
         );

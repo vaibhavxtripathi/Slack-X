@@ -53,7 +53,7 @@ export function ThemeToggle() {
 
     // Update state
     setPalette(savedPalette);
-  }, []); // Only run once on mount
+  }, [isDark]); // Add isDark to dependency array
 
   // Handle theme changes
   useEffect(() => {

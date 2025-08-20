@@ -40,7 +40,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
       password,
       flow: "signUp",
     })
-      .catch((error) => {
+      .catch(() => {
         setError("Invalid email or password");
       })
       .finally(() => {
@@ -121,7 +121,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
           </Button>
         </div>
         <p className="text-sm text-muted-foreground">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <span
             onClick={() => setState("signUp")}
             className="text-sky-950 hover:underline cursor-pointer"

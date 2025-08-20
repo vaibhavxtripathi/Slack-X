@@ -1,14 +1,13 @@
-import { useState, lazy, Suspense } from "react";
+import { useState, lazy } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { MdOutlineAddReaction } from "react-icons/md";
-import { Loader } from "lucide-react";
-import { EmojiStyle } from "emoji-picker-react";
+import { EmojiStyle, EmojiClickData } from "emoji-picker-react";
 
 const EmojiPicker = lazy(() => import("emoji-picker-react"));
 
 interface ReactionsPopoverProps {
-  onReactionClick: (emojiData: any) => void;
+  onReactionClick: (emojiData: EmojiClickData) => void;
   disabled?: boolean;
   children?: React.ReactNode;
 }
@@ -20,7 +19,7 @@ export const ReactionsPopover = ({
 }: ReactionsPopoverProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleReactionClick = (emojiData: any) => {
+  const handleReactionClick = (emojiData: EmojiClickData) => {
     onReactionClick(emojiData);
     setIsOpen(false);
   };

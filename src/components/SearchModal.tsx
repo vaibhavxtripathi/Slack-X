@@ -177,7 +177,7 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
                   searchResults.members.length === 0) && (
                   <div className="text-center py-8 text-muted-foreground">
                     <Search className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                    <p>No results found for "{debouncedQuery}"</p>
+                    <p>No results found for &quot;{debouncedQuery}&quot;</p>
                   </div>
                 )}
             </div>

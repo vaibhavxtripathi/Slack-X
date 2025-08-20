@@ -44,7 +44,11 @@ const Toolbar = () => {
             <span className="text-xs capitalize">
               Search {data?.name} workspace
             </span>
-            <span className="text-xs text-muted-foreground ml-auto">⌘K</span>
+            <span className="text-xs text-sidebar-accent-foreground ml-auto">
+              <kbd className="bg-sidebar-accent-foreground/20 text-sidebar-accent-foreground rounded-sm px-1 py-0.5">
+                ⌘ K
+              </kbd>
+            </span>
           </Button>
         </div>
         <div className="ml-auto flex-1 flex items-center justify-end">

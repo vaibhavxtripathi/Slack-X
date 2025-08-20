@@ -193,7 +193,16 @@ export const Message = ({
               isPending={isPending}
               handleEdit={() => setEditingId(id)}
               handleThread={() => onOpenMessage(id)}
-              handleEmoji={() => {}}
+              handleEmoji={(emoji: string) => {
+                toggleReaction(
+                  { messageId: id, value: emoji },
+                  {
+                    onError: () => {
+                      toast.error("Failed to add reaction");
+                    },
+                  }
+                );
+              }}
               handleDelete={handleRemove}
               handleReaction={handleReaction}
               hideThreadButton={hideThreadButton}

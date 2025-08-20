@@ -5,16 +5,15 @@ import { CreateWorkspaceModal } from "./CreateWorkspaceModal";
 import { useState, useEffect } from "react";
 
 export const Modals = () => {
+  //Preventing hydration error, this will ensure that the modal is not rendered on the server and only on the client where it is needed
+  const [mounted, setMounted] = useState(false);
 
-    //Preventing hydration error, this will ensure that the modal is not rendered on the server and only on the client where it is needed 
-    const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+  if (!mounted) return null;
 
-    if (!mounted) return null;
-    
   return (
     <>
       <CreateChannelModal />

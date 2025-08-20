@@ -334,6 +334,14 @@ input[type="text"]:focus,
   color: var(--foreground) !important;
 }
 
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* Theme-aware search placeholder */
 input::placeholder,
 .search-input::placeholder {

@@ -32,7 +32,7 @@ const WorkspaceSidebar = () => {
   });
   const { data: members } = useGetMembers(workspaceId);
 
-  const [_isOpen, setIsOpen] = useCreateChannelModal();
+  const [, setIsOpen] = useCreateChannelModal();
 
   if (isMemberLoading || isWorkspaceLoading) {
     return (

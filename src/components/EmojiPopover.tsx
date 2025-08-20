@@ -7,26 +7,33 @@ const EmojiPicker = lazy(() => import("emoji-picker-react"));
 
 interface EmojiPopoverProps {
   onEmojiClick: (emojiData: EmojiClickData) => void;
+  disabled?: boolean;
   children?: React.ReactNode;
   icon?: React.ReactNode;
 }
 
 export const EmojiPopover = ({
   onEmojiClick,
+  disabled,
   children,
   icon,
 }: EmojiPopoverProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleEmojiClick = (emojiData: EmojiClickData) => {
+    if (disabled) return;
     onEmojiClick(emojiData);
     setIsOpen(false);
   };
 
   return (
-    <Popover open={isOpen} onOpenChange={setIsOpen}>
+    <Popover open={isOpen} onOpenChange={disabled ? undefined : setIsOpen}>
       <PopoverTrigger asChild>
-        {children || <div>{icon || <Smile className="size-4" />}</div>}
+        {children || (
+          <div className={disabled ? "opacity-50 cursor-not-allowed" : ""}>
+            {icon || <Smile className="size-4" />}
+          </div>
+        )}
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="end">
         <Suspense

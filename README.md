@@ -4,7 +4,7 @@ A real-time team chat app built with Next.js 15 and Convex. Think Slack, but mod
 
 ## Demo
 
-<img src='public/slack.png' alt='slack' width='700' height='400'>
+<img src='public/slack.png' alt='slack' width='750' height='400'>
 
 ## What it does
 
